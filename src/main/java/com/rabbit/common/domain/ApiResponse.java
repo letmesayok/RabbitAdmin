@@ -9,11 +9,30 @@ import lombok.NoArgsConstructor;
  * @author wangql
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ApiResponse {
+
     private Integer code;
     private String message;
     private Object data;
     private Integer total;
+
+    private ApiResponse(){};
+
+    public ApiResponse(ResultCode code) {
+        this.code = code.code();
+        this.message = code.message();
+    }
+
+    public ApiResponse(ResultCode code, Object data) {
+        this.code = code.code();
+        this.message = code.message();
+        this.data = data;
+    }
+
+    public ApiResponse(ResultCode code, Object data, Integer total) {
+        this.code = code.code();
+        this.message = code.message();
+        this.data = data;
+        this.total = total;
+    }
 }
