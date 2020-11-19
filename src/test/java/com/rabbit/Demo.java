@@ -22,6 +22,5 @@ public class Demo {
         List<Map<String, Object>> select = demoMapper.select();
         PageInfo pageInfo = new PageInfo<>(select);
         List list = pageInfo.getList();
-        System.out.println(list);
     }
 }
