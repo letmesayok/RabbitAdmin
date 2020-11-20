@@ -13,3 +13,6 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
   mapper-locations: classpath*:mapping/*Mapper.xml
+
+swagger:
+  enable: true

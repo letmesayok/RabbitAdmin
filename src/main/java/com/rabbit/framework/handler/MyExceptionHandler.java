@@ -16,6 +16,6 @@ public class MyExceptionHandler {
     @ExceptionHandler(CommonException.class)
     @ResponseBody
     public ApiResponse handler(CommonException exception) {
-        return new ApiResponse(exception.getCode(), exception.getMessage());
+        return new ApiResponse(exception.getResultCode());
     }
 }

@@ -2,6 +2,7 @@ package com.rabbit;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.rabbit.common.domain.BusinessType;
 import com.rabbit.project.mapper.DemoMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,8 @@ public class Demo {
 
     @Test
     public void fun() {
-        PageHelper.startPage(1, 10);
-        List<Map<String, Object>> select = demoMapper.select();
-        PageInfo pageInfo = new PageInfo<>(select);
-        List list = pageInfo.getList();
+        String name = BusinessType.INSERT.name();
+        String name2 = BusinessType.INSERT.getDescription();
+        System.out.println();
     }
 }
