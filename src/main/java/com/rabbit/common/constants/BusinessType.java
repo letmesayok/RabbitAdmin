@@ -1,4 +1,4 @@
-package com.rabbit.common.domain;
+package com.rabbit.common.constants;
 
 /**
  * @author wangql

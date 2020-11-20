@@ -1,6 +1,6 @@
 package com.rabbit.framework.annotation;
 
-import com.rabbit.common.domain.BusinessType;
+import com.rabbit.common.constants.BusinessType;
 
 import java.lang.annotation.*;
 

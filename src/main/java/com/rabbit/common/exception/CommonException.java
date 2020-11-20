@@ -1,9 +1,7 @@
 package com.rabbit.common.exception;
 
-import com.rabbit.common.domain.ResultCode;
+import com.rabbit.common.constants.ResultCode;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author wangql

@@ -14,5 +14,13 @@ mybatis-plus:
     auto-mapping-behavior: full
   mapper-locations: classpath*:mapping/*Mapper.xml
 
+jwt:
+  secret: RabbitAdmin
+  tokenHeader: Authorization
+  tokenPrefix: Sans-
+  expiration: 86400 #一天时间
+  # 不需要认证的接口
+  antMatchers: /login/**
+
 swagger:
   enable: true

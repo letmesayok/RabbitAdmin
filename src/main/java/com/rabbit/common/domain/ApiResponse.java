@@ -1,8 +1,7 @@
 package com.rabbit.common.domain;
 
-import lombok.AllArgsConstructor;
+import com.rabbit.common.constants.ResultCode;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 接口通用返回类
