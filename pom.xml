@@ -71,11 +71,11 @@
             <version>3.4.1</version>
         </dependency>
 
-        <!-- 工具类 -->
+        <!-- JSON工具 -->
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.5.1</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.45</version>
         </dependency>
 
         <!-- 导入Mysql数据库链接jar包 -->
@@ -102,6 +102,14 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>2.0.5</version>
         </dependency>
+
+<!--        SpringBoot 配置工具类-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 
     </dependencies>
 

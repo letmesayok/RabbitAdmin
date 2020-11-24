@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface Log {
     public String title() default "";
-    public BusinessType businessType() default BusinessType.INSERT;
+    public BusinessType businessType() default BusinessType.OTHER;
     public boolean isSaveRequestArgs() default false;
 }
