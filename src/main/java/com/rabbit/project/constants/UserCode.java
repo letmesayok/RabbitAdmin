@@ -13,6 +13,8 @@ public enum UserCode implements ResultCode {
     PASSWORD_WRONG(false, 2444, "密码错误"),
     USER_IS_LOCKED(false, 2444, "用户已冻结"),
     NOT_LOGIN(false, 2111, "未登录！"),
+    TOKEN_EXPIRE(false, 2555, "token已过期，请重新登录"),
+    TOKEN_CLOSE(false, 2555, "token无效"),
     UNAUTHORIZED(false, 2222, "未授权！");
 
     private boolean success;

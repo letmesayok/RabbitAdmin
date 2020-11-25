@@ -5,8 +5,8 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/esmanager?characterEncoding=utf8&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rabbit?characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis-plus:
   configuration:
@@ -19,9 +19,9 @@ jwt:
   secret: RabbitAdmin
   tokenHeader: Authorization
   tokenPrefix: Rabbit-
-  expiration: 86400 #一天时间
+  expiration: 1 #一天时间
   # 不需要认证的接口
-  antMatchers: /login/**
+  antMatchers: /logout/**,/login/**,/favicon.ico
 
 # 是否开启 swagger
 swagger:

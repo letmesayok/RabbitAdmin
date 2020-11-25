@@ -2,13 +2,14 @@ package com.rabbit.framework.security.jwt;
 
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
  * @author wangql
  * jwt 配置类,从配置文件中读取
  */
-@Component
+@Configuration
 @Getter
 @ConfigurationProperties(prefix = "jwt")
 public class JwtConfig {

@@ -1,13 +1,12 @@
 # 生产环境配置文件
-# 开发环境配置文件
 server:
   port: 8800
 spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/esmanager?characterEncoding=utf8&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rabbit?characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis-plus:
   configuration:
@@ -15,5 +14,15 @@ mybatis-plus:
     auto-mapping-behavior: full
   mapper-locations: classpath*:mapping/*Mapper.xml
 
+# jwt 配置
+jwt:
+  secret: RabbitAdmin
+  tokenHeader: Authorization
+  tokenPrefix: Rabbit-
+  expiration: 86400 #一天时间
+  # 不需要认证的接口
+  antMatchers: /login/**
+
+# 是否开启 swagger
 swagger:
-  enable: false
+  enable: true

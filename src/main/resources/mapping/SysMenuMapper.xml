@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rabbit.project.mapper.SysMenuMapper">
+    <select id="selectMenuListByUserId" resultType="com.rabbit.project.domain.SysMenu">
+        SELECT a.*
+        FROM
+            sys_menu a,
+            sys_role_menu b,
+            sys_user c,
+            sys_user_role d
+        WHERE
+            a.menu_id = b.menu_id
+        AND b.role_id = d.role_id
+        AND d.user_id = c.user_id
+        AND c.user_id = #{id}
+
+    </select>
+</mapper>

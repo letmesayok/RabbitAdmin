@@ -8,12 +8,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 /**
+ * SpringSecurity用户的实体
+ * 必须实现 UserDetails 接口
  * @author wangql
  */
 @Data
 @ToString
-public class User implements UserDetails {
-    private Integer id;
+public class SecurityUser implements UserDetails {
+    private Long userId;
     private String username;
     private String password;
     /**

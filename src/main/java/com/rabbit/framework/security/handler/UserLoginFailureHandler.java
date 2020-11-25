@@ -2,6 +2,7 @@ package com.rabbit.framework.security.handler;
 
 import com.rabbit.common.constants.CommonCode;
 import com.rabbit.common.domain.ApiResponse;
+import com.rabbit.common.exception.CommonException;
 import com.rabbit.common.utils.ResultUtil;
 import com.rabbit.project.constants.UserCode;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         if(exception instanceof UsernameNotFoundException) {
             log.info("登录失败" + exception.getMessage());
+//            throw new CommonException(UserCode.USERNAME_NOT_FOUND);
             ResultUtil.responseJson(response, new ApiResponse(UserCode.USERNAME_NOT_FOUND));
         }
         if(exception instanceof LockedException) {
