@@ -1,6 +1,5 @@
 package com.rabbit.project.service;
 
-import com.rabbit.project.domain.SecurityUser;
 import com.rabbit.project.domain.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,5 +13,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISysUserService extends IService<SysUser> {
 
-    SecurityUser loadUserByUsername(String username);
 }

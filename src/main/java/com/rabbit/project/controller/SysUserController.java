@@ -1,6 +1,8 @@
 package com.rabbit.project.controller;
 
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
+import cn.dev33.satoken.stp.StpUtil;
 import com.rabbit.common.constants.CommonCode;
 import com.rabbit.common.domain.ApiResponse;
 import com.rabbit.project.domain.SysUser;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jobob
  * @since 2020-11-25
  */
+@SaCheckLogin
 @RestController
 @RequestMapping("/user")
 public class SysUserController {

@@ -1,7 +1,6 @@
 package com.rabbit.project.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.rabbit.project.domain.SecurityUser;
 import com.rabbit.project.domain.SysUser;
 import com.rabbit.project.mapper.SysUserMapper;
 import com.rabbit.project.service.ISysUserService;
@@ -20,14 +19,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 
-    @Override
-    public SecurityUser loadUserByUsername(String username) {
-        SysUser user = baseMapper.selectOne(new QueryWrapper<SysUser>().eq("username", username));
-        if(user != null) {
-            SecurityUser securityUser = new SecurityUser();
-            BeanUtils.copyProperties(user, securityUser);
-            return securityUser;
-        }
-        return null;
-    }
 }

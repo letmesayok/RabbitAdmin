@@ -1,6 +1,6 @@
 package com.rabbit.common.utils;
 
-import com.alibaba.fastjson.JSON;
+import cn.hutool.json.JSONUtil;
 import com.rabbit.common.domain.ApiResponse;
 
 import javax.servlet.ServletResponse;
@@ -28,7 +28,7 @@ public class ResultUtil {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             writer = response.getWriter();
-            writer.println(JSON.toJSONString(apiResponse));
+            writer.println(JSONUtil.toJsonStr(apiResponse));
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
