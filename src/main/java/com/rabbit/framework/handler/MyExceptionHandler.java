@@ -38,6 +38,6 @@ public class MyExceptionHandler {
     @ResponseBody
     public ApiResponse handlerNotPermissionException() {
         // 未授权
-        return new ApiResponse(UserCode.NOT_LOGIN);
+        return new ApiResponse(UserCode.UNAUTHORIZED);
     }
 }

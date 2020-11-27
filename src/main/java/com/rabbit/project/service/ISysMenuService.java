@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface ISysMenuService extends IService<SysMenu> {
 
-    List<SysMenu> selectMenuListByUserId(Long id);
+    List<Object> selectMenuListByUserId(Long id);
 
 }

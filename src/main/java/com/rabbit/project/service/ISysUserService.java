@@ -1,5 +1,6 @@
 package com.rabbit.project.service;
 
+import com.rabbit.common.domain.ApiResponse;
 import com.rabbit.project.domain.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISysUserService extends IService<SysUser> {
 
+    ApiResponse login(String username, String password);
 }
