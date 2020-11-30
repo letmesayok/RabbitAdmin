@@ -3,8 +3,6 @@ package com.rabbit.common.utils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,22 +10,16 @@ import org.springframework.stereotype.Component;
  * @author ruoyi
  */
 @Component
-public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationContextAware {
+public final class SpringUtils implements BeanFactoryPostProcessor{
 
     /**
      * Spring 上下文环境
      */
     private static ConfigurableListableBeanFactory beanFactory;
-    private static ApplicationContext applicationContext;
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         SpringUtils.beanFactory = configurableListableBeanFactory;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpringUtils.applicationContext = applicationContext;
     }
 
     /**

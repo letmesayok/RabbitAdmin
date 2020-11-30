@@ -4,6 +4,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.rabbit.common.constants.CommonCode;
 import com.rabbit.common.domain.ApiResponse;
 import com.rabbit.project.constants.UserCode;
@@ -56,5 +57,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         user.setPassword(realPwd);
         baseMapper.insert(user);
         return new ApiResponse(CommonCode.SUCCESS);
+    }
+
+    @Override
+    public SysUser getUserInfo(String username) {
+        SysUser userInfo = baseMapper.getUserInfo(username);
+        if(StringUtils.isNotBlank(userInfo.getRoleNames())) {
+            userInfo.setRoleArray(userInfo.getRoleNames().split(","));
+        }
+        return userInfo
     }
 }

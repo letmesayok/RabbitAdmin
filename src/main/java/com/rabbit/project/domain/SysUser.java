@@ -1,8 +1,11 @@
 package com.rabbit.project.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,9 +26,8 @@ public class SysUser implements Serializable {
     /**
      * 用户ID
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Long userId;
-
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
     /**
      * 用户名
      */
@@ -40,6 +42,16 @@ public class SysUser implements Serializable {
      * 状态 0：禁用   1：正常
      */
     private Integer status;
-
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 角色列表
+     */
+    @TableField(exist = false)
+    private String roleNames;
+    @TableField(exist = false)
+    private String[] roleArray;
 
 }

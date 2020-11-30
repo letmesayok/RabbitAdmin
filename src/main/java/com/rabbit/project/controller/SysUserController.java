@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-11-25
  */
 @SaCheckLogin
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class SysUserController {
@@ -34,10 +35,10 @@ public class SysUserController {
     @Autowired
     StringRedisTemplate redisTemplate;
 
-    @SaCheckPermission("sys:user:info")
-    @GetMapping("/info/{id}")
-    public ApiResponse getUserInfo(@PathVariable("id") Integer id) {
-        SysUser user = userService.getById(id);
+    @GetMapping("/info")
+    public ApiResponse getUserInfo() {
+        String username = StpUtil.getLoginIdAsString();
+        SysUser user = userService.getUserInfo(username);
         return new ApiResponse(CommonCode.SUCCESS, user);
     }
 

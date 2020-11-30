@@ -49,11 +49,4 @@ public class ThreadUtils {
             }
         }
     }
-
-    /**
-     * 打印线程异常信息
-     */
-    public static void printException(Runnable runnable, Throwable throwable) {
-
-    }
 }
