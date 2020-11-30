@@ -6,8 +6,11 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.stp.StpUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.rabbit.common.constants.BusinessType;
 import com.rabbit.common.constants.CommonCode;
 import com.rabbit.common.domain.ApiResponse;
+import com.rabbit.framework.annotation.Log;
+import com.rabbit.project.constants.UserCode;
 import com.rabbit.project.domain.SysUser;
 import com.rabbit.project.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
  * @author jobob
  * @since 2020-11-25
  */
+@SaCheckLogin
 @RestController
 @RequestMapping("/user")
 public class SysUserController {
@@ -30,7 +34,6 @@ public class SysUserController {
     @Autowired
     StringRedisTemplate redisTemplate;
 
-    @SaCheckLogin
     @SaCheckPermission("sys:user:info")
     @GetMapping("/info/{id}")
     public ApiResponse getUserInfo(@PathVariable("id") Integer id) {
@@ -38,17 +41,12 @@ public class SysUserController {
         return new ApiResponse(CommonCode.SUCCESS, user);
     }
 
-    @PostMapping("login")
-    public ApiResponse login(String username, String password) {
-        if(StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
-            return userService.login(username, password);
+    @PostMapping("/add")
+    public ApiResponse register(SysUser user) {
+        SysUser entity = userService.getOne(new QueryWrapper<SysUser>().eq("username", user.getUsername()));
+        if(entity != null) {
+            return new ApiResponse(UserCode.USERNAME_IS_EXIST);
         }
-        return new ApiResponse(CommonCode.FAIL);
-    }
-
-    @PostMapping("/logout")
-    public void logout() {
-        StpUtil.logout();
-        System.out.println("注销登录");
+        return userService.add(user);
     }
 }

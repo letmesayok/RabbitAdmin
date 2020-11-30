@@ -2,8 +2,10 @@ package com.rabbit.project.controller;
 
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
+import com.rabbit.common.constants.BusinessType;
 import com.rabbit.common.constants.CommonCode;
 import com.rabbit.common.domain.ApiResponse;
+import com.rabbit.framework.annotation.Log;
 import com.rabbit.project.domain.SysRole;
 import com.rabbit.project.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ public class SysRoleController {
     @Autowired
     ISysRoleService roleService;
 
+    @Log(title = "权限列表", businessType = BusinessType.OTHER)
     @GetMapping("/list")
     public ApiResponse getRoleList() {
         List<SysRole> list = roleService.list();

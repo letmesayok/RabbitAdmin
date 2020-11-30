@@ -3,6 +3,9 @@
 
 ## 用到的技术
 1. springboot
-2. shiro
+2. sa-token
 2. mybatis-plus
 3. pageHelper
+
+## 参考开源项目
+1. ruoyi

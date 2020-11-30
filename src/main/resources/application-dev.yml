@@ -19,13 +19,13 @@ spring:
     # 在多人登录同一账号时，是否共享会话 (为true时共用一个，为false时新登录挤掉旧登录)
     is-share: true
     # 是否尝试从请求体里读取token
-    is-read-body: true
+    is-read-body: false
     # 是否尝试从header里读取token
     is-read-head: true
     # 是否尝试从cookie里读取token
     is-read-cookie: false
     # 是否在初始化配置时打印版本字符画
-    is-v: true
+    is-v: false
 
 
 mybatis-plus:

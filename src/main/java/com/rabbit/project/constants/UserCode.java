@@ -15,6 +15,7 @@ public enum UserCode implements ResultCode {
     NOT_LOGIN(false, 2111, "未登录！"),
     TOKEN_EXPIRE(false, 2555, "token已过期，请重新登录"),
     TOKEN_CLOSE(false, 2555, "token无效"),
+    USERNAME_IS_EXIST(false, 2666, "用户名已存在"),
     UNAUTHORIZED(false, 2222, "未授权！");
 
     private boolean success;

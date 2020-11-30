@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ISysUserService extends IService<SysUser> {
 
     ApiResponse login(String username, String password);
+
+    ApiResponse add(SysUser user);
 }

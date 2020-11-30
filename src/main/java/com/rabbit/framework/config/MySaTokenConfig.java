@@ -18,6 +18,6 @@ public class MySaTokenConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new SaCheckInterceptor()).addPathPatterns("/user/**");
+        registry.addInterceptor(new SaCheckInterceptor()).addPathPatterns("/**");
     }
 }

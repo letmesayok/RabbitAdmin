@@ -14,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -44,9 +45,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         // 登陆成功
         log.info(" 登陆成功");
-        String s = JSONUtil.toJsonStr(user);
-        log.info(" "+s);
-        StpUtil.setLoginId(user.getUserId());
+        StpUtil.setLoginId(user.getUsername());
         return new ApiResponse(CommonCode.SUCCESS, StpUtil.getTokenValue());
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ApiResponse add(SysUser user) {
+        String realPwd = SecureUtil.md5(user.getPassword()+user.getUsername());
+        user.setPassword(realPwd);
+        baseMapper.insert(user);
+        return new ApiResponse(CommonCode.SUCCESS);
     }
 }
