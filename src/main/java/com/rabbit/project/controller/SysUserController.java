@@ -4,6 +4,8 @@ package com.rabbit.project.controller;
 import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.rabbit.common.constants.BusinessType;
@@ -37,8 +39,8 @@ public class SysUserController {
 
     @GetMapping("/info")
     public ApiResponse getUserInfo() {
-        String username = StpUtil.getLoginIdAsString();
-        SysUser user = userService.getUserInfo(username);
+        String userJsonStr = StpUtil.getLoginIdAsString();
+        JSONObject user = JSONUtil.parseObj(userJsonStr);
         return new ApiResponse(CommonCode.SUCCESS, user);
     }
 

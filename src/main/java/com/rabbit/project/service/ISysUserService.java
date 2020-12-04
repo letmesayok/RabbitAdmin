@@ -17,6 +17,4 @@ public interface ISysUserService extends IService<SysUser> {
     ApiResponse login(String username, String password);
 
     ApiResponse add(SysUser user);
-
-    SysUser getUserInfo(String username);
 }

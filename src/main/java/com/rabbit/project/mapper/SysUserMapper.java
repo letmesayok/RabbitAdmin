@@ -3,6 +3,8 @@ package com.rabbit.project.mapper;
 import com.rabbit.project.domain.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 系统用户表 Mapper 接口
@@ -14,4 +16,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     SysUser getUserInfo(String username);
+
+    List<String> selectRoleByUser(SysUser user);
 }

@@ -2,6 +2,7 @@ package com.rabbit.project.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -13,9 +14,10 @@ import com.rabbit.project.mapper.SysUserMapper;
 import com.rabbit.project.service.ISysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * <p>
@@ -46,7 +48,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         }
         // 登陆成功
         log.info(" 登陆成功");
-        StpUtil.setLoginId(user.getUsername());
+        List<String> list = baseMapper.selectRoleByUser(user);
+        user.setRoleList(list);
+        StpUtil.setLoginId(JSONUtil.toJsonStr(user));
         return new ApiResponse(CommonCode.SUCCESS, StpUtil.getTokenValue());
     }
 
@@ -57,14 +61,5 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         user.setPassword(realPwd);
         baseMapper.insert(user);
         return new ApiResponse(CommonCode.SUCCESS);
-    }
-
-    @Override
-    public SysUser getUserInfo(String username) {
-        SysUser userInfo = baseMapper.getUserInfo(username);
-        if(StringUtils.isNotBlank(userInfo.getRoleNames())) {
-            userInfo.setRoleArray(userInfo.getRoleNames().split(","));
-        }
-        return userInfo
     }
 }

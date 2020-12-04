@@ -50,8 +50,5 @@ public class SysUser implements Serializable {
      * 角色列表
      */
     @TableField(exist = false)
-    private String roleNames;
-    @TableField(exist = false)
-    private String[] roleArray;
-
+    List<String> roleList;
 }
